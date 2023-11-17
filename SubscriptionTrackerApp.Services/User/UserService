@@ -1,0 +1,6 @@
+namespace SubscriptionTrackerApp.Services.User;
+
+public class UserService : IUserService
+{
+    
+}
