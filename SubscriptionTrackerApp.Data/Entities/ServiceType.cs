@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace SubscriptionTrackerApp.Data.Entities
 {
-    public class WeeklyPayment
+    public class ServiceType
     {
         
     }

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace SubscriptionTrackerApp.Data.Entities
 {
-    public class YearlyPayment
+    public class SubscriptionFrequency
     {
         
     }

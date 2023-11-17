@@ -17,7 +17,7 @@ namespace SubscriptionTrackerApp.Data
             {
             }
 
-            public virtual DbSet<ServiceType> Services {get; set;}
-            
+            // public DbSet<ServiceType> ServiceTypes {get; set;}
+
     }
 }
