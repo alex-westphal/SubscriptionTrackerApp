@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace SubscriptionTrackerApp.Models.SubscriptionFrequency.MonthlyPaymentMicrosoft.AspNetCore.Mvc.Rendering;
 
-    public class MonthlyPaymentEdit
+    public class MonthlyPaymentDelete
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        DateTime RenewalDate { get; set; }
-    }
+        public string Name {get; set;}
+}

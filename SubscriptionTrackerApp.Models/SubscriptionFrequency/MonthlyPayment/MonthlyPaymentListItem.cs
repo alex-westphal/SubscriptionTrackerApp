@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace SubscriptionTrackerApp.Models.SubscriptionFrequency.MonthlyPaymentMicrosoft.AspNetCore.Mvc.Rendering;
 
-    public class MonthlyPaymentEdit
+    public class MonthlyPaymentListItem
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        DateTime RenewalDate { get; set; }
+         public int Id { get; set; }
+        public string SubscriptionFrequency { get; set; } = string.Empty;
+        DateTime RenewalDate {get; set;}
     }

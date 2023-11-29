@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SubscriptionTrackerApp.Data.Entities
+namespace SubscriptionTrackerApp.Models.SubscriptionFrequency
 {
-    public class SubscriptionFrequency 
+    public class SubscriptionFrequencyEdit
     {
         public int Id { get; set; }
         public string Name { get; set; }

@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SubscriptionTrackerApp.Data.Entities
+namespace SubscriptionTrackerApp.Models.ServiceType
 {
-    public class SubscriptionFrequency 
+    public class ServiceTypeDelete
     {
         public int Id { get; set; }
         public string Name { get; set; }
+
+        public string Description { get; set; }
+
+        public int Priority { get; set; }
     }
 }

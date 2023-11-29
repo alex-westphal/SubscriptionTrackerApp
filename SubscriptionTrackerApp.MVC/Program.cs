@@ -1,13 +1,13 @@
 using SubscriptionTrackerApp.Data;
 using SubscriptionTrackerApp.Data.Entities;
-using SubscriptionTrackerApp.Services.User;
+using SubscriptionTrackerApp.Services.SubscriptionServices;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<ISubscriptionUserService, SubscriptionUserService>();
 //Add connection string and DbContext setup
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<SubscriptionDbContext>(options => options.UseSqlServer(connectionString));
