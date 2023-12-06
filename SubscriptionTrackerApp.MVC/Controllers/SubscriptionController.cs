@@ -46,17 +46,23 @@ namespace SubscriptionTrackerApp.MVC.Controllers
         // {
         //     throw new NotImplementedException();
         // }
-
+        [HttpGet]
+        public async Task<IActionResult> Create()
+        {
+            return View();
+        }
+        
         [HttpPost]
         public async Task<IActionResult> Create(SubscriptionServiceCreate model)
         {
-            if(ModelState.IsValid)
+            if(!ModelState.IsValid)
             return View(model);
 
             await _subscriptionService.SubscriptionServiceCreateAsync(model);
             return RedirectToAction(nameof(Index));
         }
 
+        [HttpGet]
         public async Task<IActionResult> SubscriptionService(int id)
         {
             if(!ModelState.IsValid)
@@ -67,12 +73,13 @@ namespace SubscriptionTrackerApp.MVC.Controllers
             if (subscriptionService == null)
             return RedirectToAction(nameof(Index));
 
-            SubscriptionServiceListItem subscriptionService1 = await _serviceService.GetSubscriptionServiceListItemBySubscriptionIdAsync(id);
+            var subscriptionService1 = await _serviceService.GetSubscriptionServiceListItemBySubscriptionIdAsync(id);
             ViewBag.SubscriptionService = subscriptionService;
 
-            return View(subscriptionService);
+            return View(subscriptionService1);
         }
 
+        [HttpDelete]
         public async Task<IActionResult> Delete(int id)
         {
             if(!ModelState.IsValid)
