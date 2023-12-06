@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SubscriptionTrackerApp.Data;
 using SubscriptionTrackerApp.Data.Entities;
@@ -21,6 +22,7 @@ public class SubscriptionUserService : ISubscriptionUserService
         throw new NotImplementedException();
     }
 
+    [HttpPost]
     public async Task<bool> SubscriptionServiceCreateAsync(SubscriptionServiceCreate model)
     {
         SubscriptionService subscriptionService = new SubscriptionService()
@@ -67,6 +69,7 @@ public class SubscriptionUserService : ISubscriptionUserService
 
 
 
+    [HttpDelete]
     public async Task<bool> DeleteSubscriptionServiceAsync(int id)
     {
         var subscriptionServices = await _context.SubscriptionServices.FindAsync(id);
@@ -77,9 +80,20 @@ public class SubscriptionUserService : ISubscriptionUserService
         return await _context.SaveChangesAsync() == 1;
     }
 
-    public Task<List<SubscriptionServiceListItem>> GetAllSubscriptionServiceListItemsAsync()
+    public async Task<List<SubscriptionServiceListItem>> GetAllSubscriptionServiceListItemsAsync()
     {
-        throw new NotImplementedException();
+        var subscriptionServiceListItems = await _context.SubscriptionServices
+            .Select(s => new SubscriptionServiceListItem()
+            {
+                Id = s.Id,
+                Name = s.Name,
+                Type = s.Type,
+                Purpose = s.Purpose,
+                SubscriptionFrequency = s.SubscriptionFrequency,
+                PriceOfSubscription = s.PriceOfSubscription
+            })
+            .ToListAsync();
+         return subscriptionServiceListItems;
     }
 
     public Task<List<SubscriptionServiceListItem>> GetSubscriptionServiceListItemBySubscriptionIdAsync()
@@ -88,6 +102,11 @@ public class SubscriptionUserService : ISubscriptionUserService
     }
 
     public Task<List<SubscriptionServiceListItem>> SubscriptionServiceCreateAsync()
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<bool> SubscriptionServiceEditAsync(SubscriptionServiceEdit model)
     {
         throw new NotImplementedException();
     }

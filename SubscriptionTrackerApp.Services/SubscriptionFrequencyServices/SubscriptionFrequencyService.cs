@@ -19,11 +19,15 @@ namespace SubscriptionTrackerApp.Services.SubscriptionFrequencyServices;
             throw new NotImplementedException();
         }
 
-        public async Task<List<SubscriptionFrequencyListItem>> GetAllSubscriptionFrequencyListItemsAsync(int id)
+        public async Task<List<SubscriptionFrequencyListItem>> GetAllSubscriptionFrequencyListItemsAsync()
         {
-            List<SubscriptionFrequencyListItem> subscriptionFrequencyListItems = await _context.SubscriptionFrequencies
-            
-            .Select(s => new SubscriptionFrequencyListItem()).ToListAsync();
+           var subscriptionFrequencyListItems = await _context.SubscriptionFrequencies
+            .Select(s => new SubscriptionFrequencyListItem()
+            {
+                Name = s.Name,
+                SubscriptionFrequency = s.GetSubscriptionFrequency(),
+            })
+            .ToListAsync();
             return subscriptionFrequencyListItems;
         }
 
@@ -32,7 +36,7 @@ namespace SubscriptionTrackerApp.Services.SubscriptionFrequencyServices;
         throw new NotImplementedException();
     }
 
-    public Task<bool> GetAllSubscriptionFrequencyListItemsAsync()
+    Task<bool> ISubscriptionFrequencyService.GetAllSubscriptionFrequencyListItemsAsync()
     {
         throw new NotImplementedException();
     }

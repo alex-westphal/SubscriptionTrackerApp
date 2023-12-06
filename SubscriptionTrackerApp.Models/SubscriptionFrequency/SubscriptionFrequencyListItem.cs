@@ -12,6 +12,7 @@ namespace SubscriptionTrackerApp.Models.SubscriptionFrequency
 
         [Display(Name = "Frequency of Subscription Renewal")]
         public string SubscriptionFrequency { get; set; } = string.Empty;
+        public string Name { get; set; }
         DateTime RenewalDate {get; set;}
     }
 }

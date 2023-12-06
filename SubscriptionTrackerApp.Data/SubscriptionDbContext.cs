@@ -21,6 +21,7 @@ namespace SubscriptionTrackerApp.Data
         public DbSet<ServiceType> ServiceTypes { get; set; }
         public DbSet<SubscriptionFrequency> SubscriptionFrequencies { get; set; }
         public DbSet<SubscriptionService> SubscriptionServices { get; set; }
+        public object Notes { get; set; }
 
 
         // public DbSet<ServiceType> ServiceTypes {get; set;}

@@ -9,5 +9,17 @@ namespace SubscriptionTrackerApp.Data.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; }
+
+        private string subscriptionFrequency;
+
+        public string GetSubscriptionFrequency()
+        {
+            return subscriptionFrequency;
+        }
+
+        public void SetSubscriptionFrequency(string value)
+        {
+            subscriptionFrequency = value;
+        }
     }
 }

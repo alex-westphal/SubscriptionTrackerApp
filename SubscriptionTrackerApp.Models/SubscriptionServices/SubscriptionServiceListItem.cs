@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SubscriptionTrackerApp.Models.SubscriptionServicesMicrosoft.AspNetCore.Mvc.Rendering;
+namespace SubscriptionTrackerApp.Models.SubscriptionServices;
 
     public class SubscriptionServiceListItem
     {
@@ -24,16 +24,4 @@ namespace SubscriptionTrackerApp.Models.SubscriptionServicesMicrosoft.AspNetCore
 
         [Display(Name = "Price of Subscription")]
         public decimal PriceOfSubscription { get; set; }
-
-        public static implicit operator SubscriptionServiceListItem?(string? v)
-        {
-            throw new NotImplementedException();
-        }
-
-
-
-        // public static implicit operator SubscriptionServiceListItem?(string? v)
-        // {
-        //     throw new NotImplementedException();
-        // }
     }

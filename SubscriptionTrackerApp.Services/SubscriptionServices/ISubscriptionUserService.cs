@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using SubscriptionTrackerApp.Models.SubscriptionServices;
 using SubscriptionTrackerApp.Models.SubscriptionServices.Microsoft.AspNetCore.Mvc.Rendering;
 using SubscriptionTrackerApp.Models.SubscriptionServicesMicrosoft.AspNetCore.Mvc.Rendering;
@@ -10,6 +11,7 @@ public interface ISubscriptionUserService
     Task<List<SubscriptionServiceListItem>> GetAllSubscriptionServiceListItemsAsync();
     Task<List<SubscriptionServiceListItem>> GetSubscriptionServiceListItemBySubscriptionIdAsync();
 
+    Task<bool> SubscriptionServiceEditAsync( SubscriptionServiceEdit model);
     Task<bool> DeleteSubscriptionServiceAsync(int id);
     Task<List<SubscriptionServiceListItem>> SubscriptionServiceCreateAsync();
 }
