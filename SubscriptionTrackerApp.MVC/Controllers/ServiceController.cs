@@ -9,8 +9,8 @@ using SubscriptionTrackerApp.Models.SubscriptionServices;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc;
 using SubscriptionTrackerApp.Services.ServiceServices;
-using SubscriptionTrackerApp.Models.SubscriptionServices.Microsoft.AspNetCore.Mvc.Rendering;
 using SubscriptionTrackerApp.Models.SubscriptionServicesMicrosoft.AspNetCore.Mvc.Rendering;
+using SubscriptionTrackerApp.Models;
 
 // This is the controller for the Subscription Services
 namespace SubscriptionTrackerApp.MVC.Controllers
@@ -29,10 +29,17 @@ namespace SubscriptionTrackerApp.MVC.Controllers
         }
 
 
-     public async Task<IActionResult> Create()
+    public async Task<IActionResult> Create()
     {
-        List<SubscriptionServiceListItem> subscriptionServices = await _subscriptionService.SubscriptionServiceCreateAsync();
-        return View(subscriptionServices);
+        return View();
+    }
+     public async Task<IActionResult> Create(SubscriptionServiceCreate model)
+    {
+       if (!ModelState.IsValid)
+                return View(model);
+
+            await _subscriptionService.SubscriptionServiceCreateAsync(model);
+            return RedirectToAction(nameof(Index));
     }
 
 

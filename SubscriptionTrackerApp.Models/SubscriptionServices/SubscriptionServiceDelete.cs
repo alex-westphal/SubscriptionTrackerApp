@@ -1,5 +1,9 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace SubscriptionTrackerApp.Models.SubscriptionServices.Microsoft.AspNetCore.Mvc.Rendering;
+namespace SubscriptionTrackerApp.Models.SubscriptionServices;
 
 public class SubscriptionServiceDelete
 {

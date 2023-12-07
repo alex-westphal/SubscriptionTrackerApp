@@ -1,6 +1,8 @@
+using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 
-namespace SubscriptionTrackerApp.Models.SubscriptionServices.Microsoft.AspNetCore.Mvc.Rendering;
+namespace SubscriptionTrackerApp.Models;
 
 
 public class SubscriptionServiceCreate
@@ -13,10 +15,6 @@ public class SubscriptionServiceCreate
     public string Purpose { get; set; }
     public string SubscriptionFrequency { get; set; }
     public decimal PriceOfSubscription { get; set; }
-    // public IEnumerable<Microsoft.AspNetCore.Mvc.Rendering> SelectListItems { get; set; }
-
-    // public ICollection<SubscriptionTrackerApp.Data.Entities.SubscriptionService> SubscriptionServices { get; set; }
-    // public IEnumerable<SelectListItem> SelectListItems {get; set;} = new List<SelectListItem>();
     DateTime RenewalDate { get; set; }
 }
 

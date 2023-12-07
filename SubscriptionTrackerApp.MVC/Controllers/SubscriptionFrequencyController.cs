@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SubscriptionTrackerApp.Models.SubscriptionServices;
-using SubscriptionTrackerApp.Models.SubscriptionServices.Microsoft.AspNetCore.Mvc.Rendering;
 using SubscriptionTrackerApp.Services.ServiceServices;
 using SubscriptionTrackerApp.Services.SubscriptionServices;
 using SubscriptionTrackerApp.MVC;

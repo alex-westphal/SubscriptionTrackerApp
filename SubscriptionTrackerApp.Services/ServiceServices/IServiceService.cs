@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using SubscriptionTrackerApp.Models.ServiceType;
+using SubscriptionTrackerApp.Models.ServiceType.Microsoft.AspNetCore.Mvc.Rendering;
 
 
 namespace SubscriptionTrackerApp.Services.ServiceServices
@@ -16,6 +17,8 @@ namespace SubscriptionTrackerApp.Services.ServiceServices
         Task<bool> CreateServiceTypeAsync(ServiceTypeCreate request);
         Task<IEnumerable<ServiceTypeListItem>> GetServiceTypeListItems();
         Task<List<ServiceTypeListItem>> GetServiceTypeListItemsAsync();
+        Task<bool> DeleteServiceTypeAsync(int id);
+        Task<bool> ServiceTypeEditAsync(ServiceTypeEdit request);
     }
     }
 // }

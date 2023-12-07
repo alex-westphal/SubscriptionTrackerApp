@@ -10,6 +10,7 @@ using SubscriptionTrackerApp.Services.ServiceServices;
 using SubscriptionTrackerApp.Services.SubscriptionFrequencyServices;
 using SubscriptionTrackerApp.Services.SubscriptionServices;
 using SubscriptionTrackerApp.Models.ServiceType;
+using SubscriptionTrackerApp.Models.ServiceType.Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace SubscriptionTrackerApp.MVC.Controllers
 {
@@ -49,12 +50,40 @@ namespace SubscriptionTrackerApp.MVC.Controllers
             await _serviceService.CreateServiceTypeAsync(model);
             return RedirectToAction(nameof(Index));
         }
-        
+
+        public async Task<IActionResult> Edit(ServiceTypeEdit model)
+        {
+            if(!ModelState.IsValid)
+                return View(model);
+
+        await _serviceService.ServiceTypeEditAsync(model);
+        return RedirectToAction(nameof(Index));
+        }
+
         [HttpDelete]
+
+        public async Task<IActionResult> Delete()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            // if(!ModelState.IsValid)
+                // return View(int);
+
+            await _serviceService.DeleteServiceTypeAsync(id);
+            return RedirectToAction(nameof(Index));
+        }
+
+
+
         public async Task<bool> DeleteServiceTypeAsync(int id)
         {
             return true;
         }
+
+
 
     }
 }

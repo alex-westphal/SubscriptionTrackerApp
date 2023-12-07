@@ -1,0 +1,29 @@
+@model SubscriptionTrackerApp.Models.ServiceType.ServiceTypeDelete
+
+@{
+    ViewData["Title"] = "Deleted Services";
+}
+
+<div class="row">
+    <form asp-action="Delete">
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Priority" class="control-label"></label>
+                <input asp-for="Priority" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type= "submit" value="Delete"class="btn-primary btn" 
+            </div>
+        </form>
+        <div>
+            <a asp-action="Index">Back to list</a>
+        </div>
+    </div>
+</div>

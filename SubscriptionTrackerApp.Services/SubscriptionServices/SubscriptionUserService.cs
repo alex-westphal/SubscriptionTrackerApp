@@ -2,8 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SubscriptionTrackerApp.Data;
 using SubscriptionTrackerApp.Data.Entities;
+using SubscriptionTrackerApp.Models;
 using SubscriptionTrackerApp.Models.SubscriptionServices;
-using SubscriptionTrackerApp.Models.SubscriptionServices.Microsoft.AspNetCore.Mvc.Rendering;
 using SubscriptionTrackerApp.Models.SubscriptionServicesMicrosoft.AspNetCore.Mvc.Rendering;
 
 namespace SubscriptionTrackerApp.Services.SubscriptionServices;
@@ -22,7 +22,7 @@ public class SubscriptionUserService : ISubscriptionUserService
         throw new NotImplementedException();
     }
 
-    [HttpPost]
+    
     public async Task<bool> SubscriptionServiceCreateAsync(SubscriptionServiceCreate model)
     {
         SubscriptionService subscriptionService = new SubscriptionService()
@@ -110,5 +110,7 @@ public class SubscriptionUserService : ISubscriptionUserService
     {
         throw new NotImplementedException();
     }
+
+    
 }
 

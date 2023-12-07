@@ -1,6 +1,57 @@
 @model IEnumerable<SubscriptionTrackerApp.Models.SubscriptionServices.SubscriptionServiceListItem>
 @{
-    ViewData["Title"] = "People";
+    ViewData["Title"] = "Subscription Services";
 }
 
 <h1>Subscription Index</h1>
+<a asp-action="Create">Create new Subscription Service</a>
+<a asp-action="Delete">Delete an existing Subscription Service</a>
+
+@if (Model.Count() > 0)
+{
+    <div>
+        @foreach (var subscriptionService in Model)
+        {
+            <div>
+                <h4>@subscriptionService.Name</h4>
+                <div>
+                    <p>Type: @subscriptionService.Type</p>
+                    <p>Purpose: @subscriptionService.Purpose</p>
+                    <p>SubscriptionFrequency: @subscriptionService.SubscriptionFrequency</p>
+                    <p>PriceOfSubscription: @subscriptionService.PriceOfSubscription</p>
+                </div>
+                <a asp-action="Delete"asp-route-id="@subscriptionService.Id">Delete a Subscription Service</a>
+
+            </div>
+        }
+    </div>
+}
+else
+{
+    <p>There are no results for this page.</p>
+}
+
+
+<h1>Deleted Subscription Services page</h1>
+
+@if (Model.Count() > 0)
+{
+    <div>
+        @foreach (var subscriptionService in Model)
+        {
+            <div>
+                <h4>@subscriptionService.Name</h4>
+                <div>
+                    <p>Type: @subscriptionService.Type</p>
+                    <p>Purpose: @subscriptionService.Purpose</p>
+                    <p>SubscriptionFrequency: @subscriptionService.SubscriptionFrequency</p>
+                    <p>PriceOfSubscription: @subscriptionService.PriceOfSubscription</p>
+                </div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <p>There are no results for this page.</p>
+}
