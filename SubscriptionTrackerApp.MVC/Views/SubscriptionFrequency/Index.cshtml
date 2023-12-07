@@ -1,0 +1,53 @@
+@model IEnumerable<SubscriptionTrackerApp.Models.SubscriptionFrequency.SubscriptionFrequencyListItem>
+
+
+<h1>Subscription Frequencies page</h1>
+<a asp-action="Create">Create a new Subscription frequency</a>
+<a asp-action="Edit">Edit an existing SubscriptionFrequency</a>
+
+@if (Model.Count() > 0)
+{
+    <div>
+        @foreach (var service in Model)
+        {
+            <div>
+                <h4>@service.Name</h4>
+                <div>
+                    <p>Name: @service.Name</p>
+                    <p>SubscriptionFrequency: @service.SubscriptionFrequency</p>
+                    <p>Id: @service.Id</p>
+
+                </div>
+                <a asp-action="Delete"asp-route-id="@service.Id">Delete a Service Type</a>
+
+            </div>
+        }
+    </div>
+}
+else
+{
+    <p>There are no results for this page.</p>
+}
+
+<h1>Deleted Subscription Frequencies</h1>
+
+@if (Model.Count() > 0)
+{
+    <div>
+        @foreach (var service in Model)
+        {
+            <div>
+                <h4>@service.Name</h4>
+                <div>
+                    <p>Name: @service.Name</p>
+                    <p>SubscriptionFrequency: @service.SubscriptionFrequency</p>
+                    <p>Id: @service.Id</p>
+                </div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <p>There are no results for this page.</p>
+}

@@ -12,17 +12,15 @@ namespace SubscriptionTrackerApp.Services.SubscriptionServices;
 public class SubscriptionUserService : ISubscriptionUserService
 {
     private readonly SubscriptionDbContext _context;
+    private SubscriptionService subscriptionServiceToBeRemoved;
+
     public SubscriptionUserService(SubscriptionDbContext context)
     {
         _context = context;
     }
 
-    public Task<List<SubscriptionServiceListItem>> GetSubscriptionServiceListItems()
-    {
-        throw new NotImplementedException();
-    }
 
-    
+
     public async Task<bool> SubscriptionServiceCreateAsync(SubscriptionServiceCreate model)
     {
         SubscriptionService subscriptionService = new SubscriptionService()
@@ -38,6 +36,14 @@ public class SubscriptionUserService : ISubscriptionUserService
         return await _context.SaveChangesAsync() == 1;
     }
 
+
+    public Task<List<SubscriptionServiceListItem>> GetSubscriptionServiceListItems()
+    {
+        throw new NotImplementedException();
+    }
+
+
+    [HttpGet]
     public async Task<List<SubscriptionServiceListItem>> GetAllSubscriptionServiceListItemsAsync(int id)
     {
         List<SubscriptionServiceListItem> subscriptionServices = await _context.ServiceTypes
@@ -73,11 +79,15 @@ public class SubscriptionUserService : ISubscriptionUserService
     public async Task<bool> DeleteSubscriptionServiceAsync(int id)
     {
         var subscriptionServices = await _context.SubscriptionServices.FindAsync(id);
-        if (subscriptionServices == null)
-            return false;
+        _context.SubscriptionServices.Remove(subscriptionServiceToBeRemoved);
+        _context.SaveChanges();
+        return true;
 
-        _context.SubscriptionServices.Remove(subscriptionServices);
-        return await _context.SaveChangesAsync() == 1;
+        // if (subscriptionServices == null)
+        //     return false;
+
+        // _context.SubscriptionServices.Remove(subscriptionServices);
+        // return await _context.SaveChangesAsync() == 1;
     }
 
     public async Task<List<SubscriptionServiceListItem>> GetAllSubscriptionServiceListItemsAsync()
@@ -93,7 +103,7 @@ public class SubscriptionUserService : ISubscriptionUserService
                 PriceOfSubscription = s.PriceOfSubscription
             })
             .ToListAsync();
-         return subscriptionServiceListItems;
+        return subscriptionServiceListItems;
     }
 
     public Task<List<SubscriptionServiceListItem>> GetSubscriptionServiceListItemBySubscriptionIdAsync()
@@ -111,6 +121,6 @@ public class SubscriptionUserService : ISubscriptionUserService
         throw new NotImplementedException();
     }
 
-    
+
 }
 

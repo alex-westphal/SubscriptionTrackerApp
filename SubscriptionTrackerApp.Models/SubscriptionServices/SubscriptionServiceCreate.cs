@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
 
-namespace SubscriptionTrackerApp.Models;
+namespace SubscriptionTrackerApp.Models.SubscriptionServices;
 
 
 public class SubscriptionServiceCreate

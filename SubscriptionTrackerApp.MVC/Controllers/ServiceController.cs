@@ -17,7 +17,7 @@ namespace SubscriptionTrackerApp.MVC.Controllers
 {
     public class ServiceController : Controller
     {
-        
+
         private readonly IServiceService _service;
         private readonly ISubscriptionUserService _subscriptionService;
 
@@ -28,33 +28,53 @@ namespace SubscriptionTrackerApp.MVC.Controllers
             _subscriptionService = subscriptionService;
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Index()
+        {
+            List<SubscriptionServiceListItem> subscriptionServices = await _subscriptionService.GetAllSubscriptionServiceListItemsAsync();
+            return View(subscriptionServices);
+        }
 
-    public async Task<IActionResult> Create()
-    {
-        return View();
-    }
-     public async Task<IActionResult> Create(SubscriptionServiceCreate model)
-    {
-       if (!ModelState.IsValid)
+        public async Task<IActionResult> Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(SubscriptionServiceCreate model)
+        {
+            if (!ModelState.IsValid)
                 return View(model);
 
             await _subscriptionService.SubscriptionServiceCreateAsync(model);
             return RedirectToAction(nameof(Index));
-    }
+        }
 
+        public async Task<IActionResult> Edit(SubscriptionServiceEdit model)
+        {
+            if(!ModelState.IsValid)
+                return View(model);
 
+        await _subscriptionService.SubscriptionServiceEditAsync(model);
+        return RedirectToAction(nameof(Index));
+        }
 
-        public async Task<IActionResult> Index()
-    {
-        List<SubscriptionServiceListItem> subscriptionServices = await _subscriptionService.GetAllSubscriptionServiceListItemsAsync();
-        return View(subscriptionServices);
-    }
+        [HttpDelete]
+        public async Task<IActionResult> Delete()
+        {
+            return View();
+        }
 
-        // public IActionResult Index()
-        // {
-        //     return View();
-        // }
-        // private ISubscriptionUserService _subscriptionUserService;
-        // public ServiceController(ISubscriptionUserService subscriptionUserService);
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _subscriptionService.DeleteSubscriptionServiceAsync(id);
+            return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<bool> DeleteSubscriptionServiceAsync(int id)
+        {
+            return true;
+        }
+
     }
 }
